@@ -47,6 +47,27 @@ server.get('/api/project/:id', async (req, res) => {
     }
 });
 
+// server.get('/api/project/:id', async (req, res) => {
+//     try {
+//         const project = await db('project')
+//             .select('project.id', 'project.name', 'project.description', 'project.completed')
+//             .where({ id: req.params.id })
+//             .first();
+//         const action = await db('action')
+//             .join('project', 'project.id', 'action.id')
+//             .select('action.description', 'action.notes', 'action.completed')
+//             .where('action.project_id', req.params.id)
+//         if (project) {
+//             res.status(200).json({ ...project, action });
+//         } else {
+//             res.status(404).json({ message: "Error with project ID" })
+//         }
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+// })
+
+
 server.post('/api/project', async (req, res) => {
     try {
         const [id] = await db('project').insert(req.body);
