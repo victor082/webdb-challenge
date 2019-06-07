@@ -19,7 +19,8 @@ exports.up = function (knex, Promise) {
             .references('id')
             .inTable('project')
             .onDelete('CASCADE')
-            .onUpdate('CASCADE');
+            .onUpdate('CASCADE')
+            .notNullable();
     })
 };
 
