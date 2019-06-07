@@ -13,12 +13,12 @@ server.use(express.json());
 
 server.get('/api/project', async (req, res) => {
     try {
-      const project = await db('project');
-      res.status(200).json(project);
+        const project = await db('project');
+        res.status(200).json(project);
     } catch (error) {
-      res.status(500).json(error);
+        res.status(500).json(error);
     }
-  });
+});
 
 server.get('/api/project/:id', async (req, res) => {
     try {
@@ -49,12 +49,23 @@ server.post('/api/project', async (req, res) => {
 
 server.get('/api/action', async (req, res) => {
     try {
-      const action = await db('action');
-      res.status(200).json(action);
+        const action = await db('action');
+        res.status(200).json(action);
     } catch (error) {
-      res.status(500).json(error);
+        res.status(500).json(error);
     }
-  });
+});
+
+server.get('/api/action/:id', async (req, res) => {
+    try {
+        const action = await db('action')
+            .where({ id: req.params.id })
+            .first();
+        res.status(200).json(action);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 
 server.post('/api/action', async (req, res) => {
     try {

@@ -13,15 +13,6 @@ exports.up = function (knex, Promise) {
         tbl
             .boolean('completed')
             .defaultTo(false)
-
-        tbl
-            .integer('action')
-            .unsigned()
-            .notNullable()
-            .references('action')
-            .inTable('action')
-            .onDelete('CASCADE')
-            .onUpdate('CASCADE');
     })
 };
 
